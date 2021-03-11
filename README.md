@@ -5,7 +5,7 @@
 | Column               | Type       | Options                        |
 | -------------------- | ---------- | ------------------------------ |
 | nick_name            | string     | null: false                    |
-| email                | string     | unique: false                  |
+| email                | string     | null: false, unique: false     |
 | encrypted_password   | string     | null: false                    |
 | first_name           | string     | null: false                    |
 | last_name            | string     | null: false                    |
@@ -74,12 +74,12 @@
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
 | zip_code            | string     | null: false                    |
-| state_id            | interger   | null: false                    |
+| shipping_area_id    | interger   | null: false                    |
 | city                | string     | null: false                    |
 | street_address      | string     | null: false                    |
 | building            | string     |                                |
 | phone_number        | string     | null: false                    |
-| order_id            | references | null: false, foreign_key: true |
+| order               | references | null: false, foreign_key: true |
 
 ### Association
 
