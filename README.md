@@ -2,16 +2,16 @@
 
 ## users テーブル
 
-| Column              | Type      | Options                        |
-| -----------------   | --------- | ------------------------------ |
-| nick_name           | string    | null: false                    |
-| email               | string    | null: false                    |
-| password            | string    | null: false                    |
-| first_name          | string    | null: false                    |
-| last_name           | string    | null: false                    |
-| first_name_kana     | string    | null: false                    |
-| last_name_kana      | string    | null: false                    |
-| birthday            | date      | null: false                    |
+| Column               | Type       | Options                        |
+| -------------------- | ---------- | ------------------------------ |
+| nick_name            | string     | null: false                    |
+| email                | string     | unique: false                  |
+| encrypted_password   | string     | null: false                    |
+| first_name           | string     | null: false                    |
+| last_name            | string     | null: false                    |
+| first_name_kana      | string     | null: false                    |
+| last_name_kana       | string     | null: false                    |
+| birthday             | date       | null: false                    |
 
 ### Association
 
@@ -22,17 +22,17 @@
 
 ## items テーブル
 
-| Column              | Type      | Options                        |
-| ------------------- | --------- | ------------------------------ |
-| product_name        | string    | null: false                    |
-| price               | interger  | null: false                    |
-| description_of_item | text      | null: false                    |
-| seller_name         | reference | null: false, foreign_key: true |
-| category            | interger  | null: false                    |
-| product_condition   | interger  | null: false                    |
-| shipping_fee        | interger  | null: false                    |
-| shipping_area       | interger  | null: false                    |
-| date_of_shipment    | interger  | null: false                    |
+| Column               | Type       | Options                        |
+| -------------------- | ---------- | ------------------------------ |
+| product_name         | string     | null: false                    |
+| price                | interger   | null: false                    |
+| description_of_item  | text       | null: false                    |
+| user                 | references | null: false, foreign_key: true |
+| category_id          | interger   | null: false                    |
+| product_condition_id | interger   | null: false                    |
+| shipping_fee_id      | interger   | null: false                    |
+| shipping_area_id     | interger   | null: false                    |
+| date_of_shipment_id  | interger   | null: false                    |
 
 ### Association
 
@@ -51,7 +51,7 @@
 ### Association
 
 - belongs_to :user
-- has_one :item
+- belongs_to :item
 - has_one :address
 
 
@@ -71,16 +71,16 @@
 
 ## addresss テーブル
 
-| Column               | Type      | Options                        |
-| -------------------- | --------- | ------------------------------ |
-| zip_code             | string    | null: false                    |
-| state                | interger  | null: false                    |
-| city                 | string    | null: false                    |
-| street_address       | string    | null: false                    |
-| building             | string    | null: false                    |
-| phone_number         | string    | null: false                    |
-| order                | interger  | null: false                    |
+| Column              | Type       | Options                        |
+| ------------------- | ---------- | ------------------------------ |
+| zip_code            | string     | null: false                    |
+| state_id            | interger   | null: false                    |
+| city                | string     | null: false                    |
+| street_address      | string     | null: false                    |
+| building            | string     |                                |
+| phone_number        | string     | null: false                    |
+| order_id            | references | null: false, foreign_key: true |
 
 ### Association
 
-- has_one :order
+- belongs_to :order
