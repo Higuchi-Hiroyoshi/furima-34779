@@ -25,14 +25,14 @@
 | Column               | Type       | Options                        |
 | -------------------- | ---------- | ------------------------------ |
 | product_name         | string     | null: false                    |
-| price                | interger   | null: false                    |
+| price                | integer   | null: false                    |
 | description_of_item  | text       | null: false                    |
 | user                 | references | null: false, foreign_key: true |
-| category_id          | interger   | null: false                    |
-| product_condition_id | interger   | null: false                    |
-| shipping_fee_id      | interger   | null: false                    |
-| shipping_area_id     | interger   | null: false                    |
-| date_of_shipment_id  | interger   | null: false                    |
+| category_id          | integer   | null: false                    |
+| product_condition_id | integer   | null: false                    |
+| shipping_fee_id      | integer   | null: false                    |
+| shipping_area_id     | integer   | null: false                    |
+| date_of_shipment_id  | integer   | null: false                    |
 
 ### Association
 
@@ -74,7 +74,7 @@
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
 | zip_code            | string     | null: false                    |
-| shipping_area_id    | interger   | null: false                    |
+| shipping_area_id    | integer   | null: false                    |
 | city                | string     | null: false                    |
 | street_address      | string     | null: false                    |
 | building            | string     |                                |
