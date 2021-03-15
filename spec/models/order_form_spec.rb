@@ -13,6 +13,10 @@ RSpec.describe OrderForm, type: :model do
       it '全項目が存在すれば購入できる' do
         expect(@order_form).to be_valid
       end
+      it 'buildingが空でも購入できる' do
+        @order_form.building = ''
+        expect(@order_form).to be_valid
+      end
     end
 
     context '商品購入できないとき' do
@@ -31,7 +35,7 @@ RSpec.describe OrderForm, type: :model do
         @order_form.valid?
         expect(@order_form.errors.full_messages).to include('Shipping area must be other than 1')
       end
-      it 'cityが空だとが空だと購入できない' do
+      it 'cityが空だとが購入できない' do
         @order_form.city = ''
         @order_form.valid?
         expect(@order_form.errors.full_messages).to include("City can't be blank")
@@ -50,6 +54,16 @@ RSpec.describe OrderForm, type: :model do
         @order_form.phone_number = 'あアｱａa０'
         @order_form.valid?
         expect(@order_form.errors.full_messages).to include('Phone number is invalid')
+      end
+      it 'phone_numberが英数字混合では登録できない' do
+        @order_form.phone_number = '0a0a0a0a0a0'
+        @order_form.valid?
+        expect(@order_form.errors.full_messages).to include('Phone number is invalid')
+      end
+      it 'phone_numberは12桁以上では登録できない' do
+        @order_form.phone_number = '123456789012'
+        @order_form.valid?
+        expect(@order_form.errors.full_messages).to include('Phone number is too long (maximum is 11 characters)')
       end
       it 'user_idが空だと購入できない' do
         @order_form.user_id = ''
